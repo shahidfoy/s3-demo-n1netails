@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.shahidfoy</groupId>
 	<artifactId>s3-demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<name>s3-demo</name>
 	<description>Demo project for Spring Boot with s3</description>
 	<url/>
@@ -55,6 +55,12 @@
 			<groupId>software.amazon.awssdk</groupId>
 			<artifactId>s3</artifactId>
 			<version>2.28.16</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.n1netails</groupId>
+			<artifactId>n1netails-kuda</artifactId>
+			<version>0.2.0</version>
 		</dependency>
 
 		<dependency>

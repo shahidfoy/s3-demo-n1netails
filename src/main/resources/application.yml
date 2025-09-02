@@ -17,3 +17,8 @@ logging:
     com:
       shahidfoy:
         s3_demo: debug
+
+n1netails.kuda.config:
+  api: http://localhost:9901
+  path: /ninetails/alert
+  token: ${N1NETOKEN}
