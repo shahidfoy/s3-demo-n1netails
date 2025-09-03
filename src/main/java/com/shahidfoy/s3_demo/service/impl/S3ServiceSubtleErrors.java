@@ -33,6 +33,11 @@ public class S3ServiceSubtleErrors implements S3StorageService {
     public void saveFileToBucket(String bucket, String fileName, String contentType, byte[] bytes) {
         log.debug("== S3 saveFileToBucket: {}", fileName);
 
+        // Subtle trigger: throw exception if filename starts with "__error__"
+        if (fileName.startsWith("__error__")) {
+            throw new IllegalStateException("Subtle failure saving file: " + fileName);
+        }
+
         saveFileNotification(bucket, fileName, contentType);
 
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
@@ -43,11 +48,6 @@ public class S3ServiceSubtleErrors implements S3StorageService {
                 .build();
 
         s3Client.putObject(putObjectRequest, RequestBody.fromBytes(bytes));
-
-        // Subtle trigger: throw exception if filename starts with "__error__"
-        if (fileName.startsWith("__error__")) {
-            throw new IllegalStateException("Subtle failure saving file: " + fileName);
-        }
     }
 
     private static void saveFileNotification(String bucket, String fileName, String contentType) {
